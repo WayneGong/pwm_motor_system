@@ -1,0 +1,87 @@
+
+`timescale 1 ps/ 1 ps
+module top_vlg_tst();
+
+reg clk;
+reg [1:0] key_in;
+reg rst_n;
+reg speed;
+// wires                                               
+wire [6:0]  HEX0;
+wire [6:0]  HEX1;
+wire [6:0]  HEX2;
+wire [6:0]  HEX3;
+wire [6:0]  HEX4;
+wire [6:0]  HEX5;
+wire pwm_out;
+
+// assign statements (if any)                          
+top i1 (
+// port map - connection between master ports and signals/registers   
+	.HEX0(HEX0),
+	.HEX1(HEX1),
+	.HEX2(HEX2),
+	.HEX3(HEX3),
+	.HEX4(HEX4),
+	.HEX5(HEX5),
+	.clk(clk),
+	.key_in(key_in),
+	.pwm_out(pwm_out),
+	.rst_n(rst_n),
+	.speed(speed)
+);
+initial                                                
+begin                                                  
+				clk		=	0	;
+				key_in	=	0	;
+				rst_n	=	0	;
+				speed	=	0	;	
+		#100	rst_n	=	1	;
+		
+		#5000	key_in	=	10	;		
+		#5000	key_in	=	00	;
+		
+		#5000	key_in	=	10	;		
+		#5000	key_in	=	00	;
+		
+		#5000	key_in	=	10	;		
+		#5000	key_in	=	00	;
+		
+		#5000	key_in	=	10	;		
+		#5000	key_in	=	00	;
+		
+		#5000	key_in	=	10	;		
+		#5000	key_in	=	00	;	
+		
+		#5000	key_in	=	10	;		
+		#5000	key_in	=	00	;
+		
+		#5000	key_in	=	10	;		
+		#5000	key_in	=	00	;
+	
+
+		#5000	key_in	=	01	;		
+		#5000	key_in	=	00	;	
+		
+		#5000	key_in	=	01	;		
+		#5000	key_in	=	00	;
+	
+		#5000	key_in	=	01	;		
+		#5000	key_in	=	00	;
+
+		#5000	key_in	=	01	;		
+		#5000	key_in	=	00	;
+
+		#5000	key_in	=	01	;		
+		#5000	key_in	=	00	;	
+		
+		#5000	$stop;
+
+                     
+end                                                    
+always
+begin                                                  
+	#10	clk	=	~clk;
+end                                                    
+endmodule
+
